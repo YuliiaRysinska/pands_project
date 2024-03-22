@@ -1,7 +1,4 @@
-
-
 # About Project
-***
 This Project built on the basis of the acquired knowledge of the course "Programming and Scripting", teacher Andrew Beatty, ATU. 
 This Project explore differences between species with regards to the features measured through desciptive statistics, graphs and statistical tests, implement a classification approach, identify which features were the most informative and assess the accuracy of the approach
 and identify relationships between features both across and within species, and test for the strength and statisical significance of these relationships.
@@ -14,6 +11,7 @@ The raw data file was downloaded from Iris Data Set: https://archive.ics.uci.edu
 
 # References
 Wikipedia entry: Iris flower data set. https://en.wikipedia.org/wiki/Iris_flower_data_set. 
+
 Iris Data Set: https://archive.ics.uci.edu/dataset/53/iris.
 
 Python Software Foundation: https://www.python.org.
