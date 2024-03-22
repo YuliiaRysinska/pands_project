@@ -12,10 +12,10 @@ The Project concerns the well-known Fisher’s Iris data set which considered a 
 
 # References
 Python Software Foundation. Welcome to python.org. https://www.python.org/.
-https://www.w3schools.com/python
-https://www.youtube.com/watch?v=KM0N7pIYCJo
-Iris Data Set: http://archive.ics.uci.edu/ml/datasets/Iris
-https://github.com/andrewbeattycourseware/pands-course-material
-[](https://github.com/ianmcloughlin/mywork)
+https://www.w3schools.com/python.
+https://www.youtube.com/watch?v=KM0N7pIYCJo.
+Iris Data Set: http://archive.ics.uci.edu/ml/datasets/Iris.
+https://github.com/andrewbeattycourseware/pands-course-material.
+[GitHub:](https://github.com/ianmcloughlin/mywork).
 
 
