@@ -15,5 +15,5 @@ The raw data file was downloaded from Iris Data Set: https://archive.ics.uci.edu
 3) Python Software Foundation: https://www.python.org.
 4) Datacamp: Machine Learning in R https://www.datacamp.com/community/tutorials/machine-learning-in-r.
 5) https://github.com/andrewbeattycourseware/pands-course-material.
-6)https://github.com/ianmcloughlin/mywork.
+6) https://github.com/ianmcloughlin/mywork.
 7) http://www.lac.inpe.br/~rafael.santos/Docs/CAP394/WholeStory-Iris.html.
