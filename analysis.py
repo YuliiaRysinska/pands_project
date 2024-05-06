@@ -1,44 +1,65 @@
-#using necessary libraries
-import pandas as pd
-import seaborn as sns 
+from sklearn.datasets import load_iris
 import matplotlib.pyplot as plt
-import numpy as np
-import sklearn
+from sklearn.decomposition import PCA
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+from sklearn.svm import SVC
+
+iris=load_iris()
+
+# splitting the features and the labels
+features=iris.data
+labels=iris.target
+
+labels_names = ['I.setosa', 'I.versicolor', 'I.virginica']
+colors=['blue', 'red', 'green']
+
+# plot-1 between sepal length and sepal width
+for i in range(len(colors)):
+    px=features[:,0][labels==i]
+    py=features[:,1][labels==i]
+    plt.scatter(px, py, c=colors[i])
+plt.legend(labels_names)
+plt.xlabel('Sepal Length')
+plt.ylabel('Sepal Width')
+plt.show()
 
 
-#Loading iris dataset into panda data frame
+# plot-2 between petal length and petal width
+for i in range(len(colors)):
+    px=features[:,1][labels==i]
+    py=features[:,2][labels==i]
+    plt.scatter(px, py, c=colors[i])
+plt.legend(labels_names)
+plt.xlabel('Petal Length')
+plt.ylabel('Petal Width')
+plt.show()
 
-iris = pd.read_csv('iris.csv')
-#view of general data
-print(iris.head(10))
-print(iris.info())
-print(iris.describe()) 
-print(iris['species'].value_counts())
+# Estimating two principle components using PCA
+est=PCA(n_components=2)
+x_pca=est.fit_transform(features)
 
+colors=['black', 'orange', 'pink']
+for i in range(len(colors)):
+    px=x_pca[:,0][labels==i]
+    py=x_pca[:,1][labels==i]
+    plt.scatter(px, py, c=colors[i])
+plt.legend(labels_names)
+plt.xlabel('First Principle Component')
+plt.ylabel('Second Principle Component')
+plt.show()
 
-#visual inspection of whether there is a relationship between independent and dependent metrics (categories)
-sns.pairplot(data = iris, hue = 'species')
-#plt.savefig("pairplot.png")
+# splitting testing ab=nd training data
+x_train, x_test, y_train, y_test = train_test_split(
+    x_pca, labels, test_size=0.4, random_state=33)
 
-#form a set of independent and dependent metrics
-y = iris['species']
-x = iris.drop(columns = 'species')
-print("Total lens", len(x), len(y))
+# training the SVM classifier
+clf=SVC()
+clf.fit(x_train, y_train)
 
-#formation of separate sets for forecast model training and testing
-x_train, x_test, y_train, y_test = train_test_split(x,y)
+# predicting the results
+pred = clf.predict(x_test)
 
-print("Train len", len(x_train), len(y_train))
-print("Test len", len(x_test), len(y_test))
-print(x_train)
-
-#random model evaluation
-# https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html
-random_y_test = np.random.choice(np.unique(y), size=len(y_test))
-#print(y_test)
-#print(random_y_test)
-random_accuracy_score = accuracy_score(y_test, random_y_test)
-print("Random accuracy score = ", random_accuracy_score)
-
+# generate evaluation report
+from sklearn import metrics
+print(metrics.classification_report(
+    y_test, pred, target_names=labels_names))
